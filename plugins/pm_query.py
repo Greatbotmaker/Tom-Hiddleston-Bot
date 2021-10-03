@@ -22,7 +22,6 @@ else:
 
 @RenameBot.on_message(filters.private & filters.command("start"))
 async def start_handler(bot: Client, event: Message):
-    await AddUserToDatabase(bot, event)
     FSub = await ForceSub(bot, event)
     if FSub == 400:
         return
