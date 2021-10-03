@@ -21,7 +21,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
 class Config(object):
-    API_ID = int(os.environ.get("API_ID", 12345))
+    API_ID = int(os.environ.get("APP_ID", ""))
     API_HASH = os.environ.get("API_HASH", "")
     TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
     AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
