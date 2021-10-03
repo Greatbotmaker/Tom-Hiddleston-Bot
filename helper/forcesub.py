@@ -4,8 +4,9 @@ import asyncio
 from configs import Config
 from pyrogram import Client
 from pyrogram.errors import FloodWait, UserNotParticipant
+from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-
+from pyrogram.errors import FloodWait
 
 async def ForceSub(bot: Client, event: Message):
     """
