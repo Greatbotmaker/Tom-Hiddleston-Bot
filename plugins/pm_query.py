@@ -36,6 +36,8 @@ async def start_handler(bot: Client, event: Message):
             ]
         )
     )
+
+
         except Exception:
             pass
         return
