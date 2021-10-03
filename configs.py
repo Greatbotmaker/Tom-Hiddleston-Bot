@@ -37,6 +37,22 @@ Click Help Button For More🙊.
 
 Made by @OwDvEr_BoT 🔥
     """
+    HELP_TEXT = """
+<b><i><u>How To Use Me!?</u></i></b>
+<i>
+-> Just Go To My Movie Group And Ask For A Movie (Example: "Luca 2019" or "Luca")
+</i>
+<b><i><u>How To Add Me To Your Group!?</u></i></b>
+<i>
+-> Click /start
+-> Click The "➕ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕" Button
+-> Then Choose The Group Which You Need To Add Me  
+-> Then Make Me Admin
+</i>
+
+
+@OwDvEr_BoT
+"""
 
 
 def LOGGER(name: str) -> logging.Logger:
