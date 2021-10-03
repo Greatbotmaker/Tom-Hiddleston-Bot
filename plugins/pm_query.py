@@ -46,9 +46,6 @@ async def start_handler(bot: Client, event: Message):
     )
 
 
-        except Exception:
-            pass
-        return
     try:
         await client.send_message(
             chat_id=message.chat.id,
