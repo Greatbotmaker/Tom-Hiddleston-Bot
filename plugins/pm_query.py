@@ -20,7 +20,7 @@ else:
     from config import Config
 
 
-@RenameBot.on_message(filters.private & filters.command("start"))
+@Client.on_message(filters.private & filters.command("start"))
 async def start_handler(bot: Client, event: Message):
     FSub = await ForceSub(bot, event)
     if FSub == 400:
