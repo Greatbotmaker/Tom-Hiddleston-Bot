@@ -5,11 +5,11 @@ import os
 from pyrogram import Client
 
 if os.environ.get("ENV", False):
-    from Config import Config
-    from Config import LOGGER
+    from Configs import Config
+    from Configs import LOGGER
 else:
-    from config import Config
-    from config import LOGGER
+    from configs import Config
+    from configs import LOGGER
 
 class User(Client):
     def __init__(self):
