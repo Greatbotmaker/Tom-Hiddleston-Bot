@@ -23,7 +23,7 @@ async def bot_pm(client: Bot, message: Message):
     if message.text == "/start":
         await client.send_message(
             chat_id=message.chat.id,
-            text=configs.START_TEXT,
+            text=Config.START_TEXT,
             parse_mode='html',
             disable_web_page_preview=True
         )
@@ -49,7 +49,7 @@ async def bot_pm(client: Bot, message: Message):
     try:
         await client.send_message(
             chat_id=message.chat.id,
-            text=configs.START_TEXT,
+            text=Config.START_TEXT,
             parse_mode='html',
             disable_web_page_preview=True
         )
