@@ -19,6 +19,15 @@ async def ForceSub(bot: Client, event: Message):
     """
     
     try:
+        invite_link = await bot.create_chat_invite_link(chat_id=(int(Config.UPDATES_CHANNEL) if Config.UPDATES_CHANNEL.startswith("-100") else Config.UPDATES_CHANNEL))
+    except FloodWait as e:
+        await asyncio.sleep(e.x)
+        fix_ = await ForceSub(bot, event)
+        return fix_
+    except Exception as err:
+        print(f"Unable to do Force Subscribe to {Config.UPDATES_CHANNEL}\n\nError: {err}\n\nContact My Owner : https://t.me/OwDvEr_BoT")
+        return 200
+    try:
         user = await bot.get_chat_member(chat_id=(int(Config.UPDATES_CHANNEL) if Config.UPDATES_CHANNEL.startswith("-100") else Config.UPDATES_CHANNEL), user_id=event.from_user.id)
         if user.status == "kicked":
             await bot.send_message(
