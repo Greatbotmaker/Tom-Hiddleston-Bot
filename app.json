@@ -5,7 +5,7 @@
   "website": "https://github.com/owdver/DQ40",
   "repository": "https://github.com/owdver/DQ40",
   "env": {
-        "APP_ID": {
+        "API_ID": {
           "description": "Get this value from https://my.telegram.org", "required": true
         },
         "API_HASH": {
