@@ -8,9 +8,11 @@ from bot import Bot
 from presets import Presets
 from base64 import b64decode
 from helper.file_size import get_size
+from helper.forcesub import ForceSub
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait
 from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 
 if os.environ.get("ENV", False):
     from configs import Config
@@ -18,15 +20,23 @@ else:
     from config import Config
 
 
-@Client.on_message(filters.private & filters.text)
-async def bot_pm(client: Bot, message: Message):
-    if message.text == "/start":
-        await client.send_message(
-            chat_id=message.chat.id,
-            text=Config.START_TEXT,
-            parse_mode='html',
-            disable_web_page_preview=True
+@RenameBot.on_message(filters.private & filters.command("start"))
+async def start_handler(bot: Client, event: Message):
+    await AddUserToDatabase(bot, event)
+    FSub = await ForceSub(bot, event)
+    if FSub == 400:
+        return
+    await event.reply_text(
+        text=f"Hi, {event.from_user.mention}\n{Config.START_TEXT}",
+        quote=True,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("Main Group", url="https://t.me/OB_MOVIESGROUP"),
+                 InlineKeyboardButton("Main Channel", url="https://t.me/OB_Links")],
+                [InlineKeyboardButton("Developer - @OwDvEr_BoT", url="https://t.me/OwDvEr_BoT")]
+            ]
         )
+    )
         return
     try:
         query_message = message.text.split(" ")[-1]
