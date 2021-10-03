@@ -16,7 +16,7 @@ class User(Client):
         super().__init__(
             Config.TG_USER_SESSION,
             api_hash=Config.API_HASH,
-            api_id=Config.APP_ID,
+            api_id=Config.API_ID,
             workers=4
         )
         self.LOGGER = LOGGER
