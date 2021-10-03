@@ -29,7 +29,7 @@
         "GROUP_U_NAME": {
           "description": "Username of the group to tag in sending medias","required": false
         },
-        "BOT_OWNER = {
+        "BOT_OWNER": {
           "description": "BOT_OWNER", 1445283714","required": true
         },
         "ENV": {"description": "Set this to ANYTHING","value": "ANYTHING"
