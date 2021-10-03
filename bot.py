@@ -1,7 +1,27 @@
-#----------------------------------- https://github.com/m4mallu/gofilesbot --------------------------------------------#
+#-------------------------------------------------------------------- https://github.com/owdver/DQ40 --------------------------------------------------------------------------#
 import os
+import time
+import psutil
+import shutil
+import string
+import asyncio
+from pyromod import listen
+from pyrogram import Client, filters
+from asyncio import TimeoutError
+from pyrogram.errors import MessageNotModified
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 
-from pyrogram import Client
+from configs import Config
+from helpers.settings import OpenSettings
+from helpers.database.access_db import db
+from helpers.forcesub import ForceSub
+from helpers.check_gap import CheckTimeGap
+from helpers.setup_prefix import SetupPrefix
+from helpers.broadcast import broadcast_handler
+from helpers.uploader import UploadFile, UploadVideo, UploadAudio
+from helpers.database.add_user import AddUserToDatabase
+from helpers.display_progress import progress_for_pyrogram, humanbytes
+
 from user import User
 
 if bool(os.environ.get("ENV", False)):
