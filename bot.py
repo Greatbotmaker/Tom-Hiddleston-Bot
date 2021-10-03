@@ -5,8 +5,8 @@ from pyrogram import Client
 from user import User
 
 if bool(os.environ.get("ENV", False)):
-    from Config import Config
-    from Config import LOGGER
+    from Configs import Config
+    from Configs import LOGGER
 else:
     from config import Config
     from config import LOGGER
