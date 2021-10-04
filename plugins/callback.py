@@ -6,20 +6,8 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
-from bot import start_uptime, Translation, VERIFY # pylint: disable=import-error
-from bot.plugins.auto_filter import ( # pylint: disable=import-error
-    FIND, 
-    INVITE_LINK, 
-    ACTIVE_CHATS,
-    recacher,
-    gen_invite_links
-    )
-from bot.plugins.settings import( # pylint: disable=import-error
-    remove_emoji
-)
-from bot.database import Database # pylint: disable=import-error
-
-db = Database()
+from bot import configs, VERIFY # pylint: disable=import-error
+from bot.helper.forcesub import ( # pylint: disable=import-error
 
 @Client.on_callback_query(filters.regex(r"^(start|help|about|close)$"), group=2)
 async def callback_data(bot, update: CallbackQuery):
@@ -45,3 +33,42 @@ async def callback_data(bot, update: CallbackQuery):
             parse_mode="html",
             disable_web_page_preview=True
         )
+    
+    elif query_data == "help":
+        buttons = [[
+            InlineKeyboardButton('🏠 𝙷𝚘𝚖𝚎', callback_data='start'),
+            InlineKeyboardButton('𝙰𝚋𝚘𝚞𝚝 🚩', callback_data='about')
+        ],[
+            InlineKeyboardButton('🔐 𝙲𝚕𝚘𝚜𝚎 🔐', callback_data='close')
+        ]]
+    
+        reply_markup = InlineKeyboardMarkup(buttons)
+        
+        await update.message.edit_text(
+            Translation.HELP_TEXT,
+            reply_markup=reply_markup,
+            parse_mode="html",
+            disable_web_page_preview=True
+        )
+
+
+    elif query_data == "about": 
+        buttons = [[
+            InlineKeyboardButton('👨🏻‍💻 𝙾𝚠𝙳𝚟𝙴𝚛', url='https://t.me/OWDVER_BOT'),
+            InlineKeyboardButton('👨🏻‍💻 𝙴𝚒𝚗𝚜𝚝𝚎𝚒𝚗', url='https://t.me/AlbertEinstein_TG')
+        ],[
+            InlineKeyboardButton('🏠 Home', callback_data='start'),
+            InlineKeyboardButton('Close 🔐', callback_data='close')
+        ]]
+        
+        reply_markup = InlineKeyboardMarkup(buttons)
+        
+        await update.message.edit_text(
+            Translation.ABOUT_TEXT,
+            reply_markup=reply_markup,
+            parse_mode="html"
+        )
+
+
+    elif query_data == "close":
+        await update.message.delete()
