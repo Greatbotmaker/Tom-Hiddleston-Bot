@@ -7,7 +7,7 @@ from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
 from bot import configs, VERIFY # pylint: disable=import-error
-from helper.forcesub import ForceSub import ( # pylint: disable=import-error
+from helper.forcesub import ForceSub
 
 @Client.on_callback_query(filters.regex(r"^(start|help|about|close)$"), group=2)
 async def callback_data(bot, update: CallbackQuery):
