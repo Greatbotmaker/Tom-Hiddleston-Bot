@@ -24,27 +24,16 @@ if os.environ.get("ENV", False):
 else:
     from config import Config
 
-
 @Client.on_message(filters.private & filters.command("start"))
-
 async def start_handler(bot: Client, event: Message):
-
     FSub = await ForceSub(bot, event)
-
     if FSub == 400:
-
         return
-
     await event.reply_text(
-
         text=f"Hi, {event.from_user.mention}\n{Config.START_TEXT}",
-
         quote=True,
-
         reply_markup=InlineKeyboardMarkup(
-
                 buttons = [[
-
         InlineKeyboardButton('➕ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕', url=f'http://t.me/OB_FILTERBOT?startgroup=botstart')
         ],[
 
@@ -54,8 +43,7 @@ async def start_handler(bot: Client, event: Message):
         InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
         InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")
     ]]
-            
-     try:
+            try:
              await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.START_TEXT.format(
