@@ -7,8 +7,9 @@ from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
 from configs import Config
-from plugins import pm_query
 from helper.forcesub import ForceSub
+
+import plugins.pm_query
 
 @Client.on_callback_query(filters.regex(r"^(start|help|about|close)$"), group=2)
 async def callback_data(bot, update: CallbackQuery):
