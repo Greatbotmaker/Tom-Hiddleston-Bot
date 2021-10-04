@@ -6,7 +6,7 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
-from configs import Config, VERIFY # pylint: disable=import-error
+from configs import Config
 from plugins import pm_query, VERIFY # pylint: disable=import-error
 from helper.forcesub import ForceSub, VERIFY # pylint: disable=import-error
 
