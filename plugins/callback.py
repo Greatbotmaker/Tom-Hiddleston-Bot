@@ -9,7 +9,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQ
 from bot import configs, VERIFY # pylint: disable=import-error
 from bot.helper.forcesub import ( # pylint: disable=import-error
 
-@Client.on_callback_query(filters.regex(r"^(start|help|about|close)$"), group=2)
+@Client.on_callback_query(filters.regex(r"(start|help|about|close)$"), group=2)
 async def callback_data(bot, update: CallbackQuery):
 
     query_data = update.data
