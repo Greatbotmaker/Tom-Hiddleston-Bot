@@ -46,37 +46,23 @@ async def start_handler(bot: Client, event: Message):
                 buttons = [[
 
         InlineKeyboardButton('➕ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕', url=f'http://t.me/OB_FILTERBOT?startgroup=botstart')
-
         ],[
 
         InlineKeyboardButton('👨🏻‍💻 𝙲𝚁𝙴𝙰𝚃𝙾𝚁', url=f't.me/OWDVER_BOT'),
-
         InlineKeyboardButton('𝙲𝙷𝙰𝙽𝙽𝙴𝙻 📢', url=f't.me/OB_LINKS')
-
     ],[
-
         InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
-
         InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")
-
     ]]
-
+            
      try:
-
              await bot.send_message(
-
         chat_id=update.chat.id,
-
         text=Translation.START_TEXT.format(
-
                 update.from_user.first_name)
-
         reply_markup = InlineKeyboardMarkup(buttons)
-
         parse_mode="html",
-
         reply_to_message_id=update.message_id
-
     )
 
 @Client.on_message(filters.command(["help"]) & filters.private, group=1)
