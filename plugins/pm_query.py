@@ -42,8 +42,8 @@ async def start_handler(bot: Client, event: Message):
     ],[
         InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
         InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")
-    ]]
-            try:
+    ]]   
+    try:
              await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.START_TEXT.format(
