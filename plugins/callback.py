@@ -16,7 +16,7 @@ async def callback_data(bot, update: CallbackQuery):
 
     if query_data == "start":
         buttons = [[
-        InlineKeyboardButton('➕ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕', url=f'http://t.me/OB_FILTERBOT?startgroup=botstart')
+        InlineKeyboardButton('➕ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕', url=f'http://t.me/OB_FILTEROBOT?startgroup=botstart')
         ],[
         InlineKeyboardButton('👨🏻‍💻 𝙲𝚁𝙴𝙰𝚃𝙾𝚁', url=f't.me/OWDVER_BOT'),
         InlineKeyboardButton('𝙲𝙷𝙰𝙽𝙽𝙴𝙻 📢', url=f't.me/OB_LINKS')
@@ -55,7 +55,7 @@ async def callback_data(bot, update: CallbackQuery):
     elif query_data == "about": 
         buttons = [[
             InlineKeyboardButton('👨🏻‍💻 𝙾𝚠𝙳𝚟𝙴𝚛', url='https://t.me/OWDVER_BOT'),
-            InlineKeyboardButton('👨🏻‍💻 𝙴𝚒𝚗𝚜𝚝𝚎𝚒𝚗', url='https://t.me/AlbertEinstein_TG')
+            InlineKeyboardButton('👨🏻‍💻 𝙴𝚒𝚗𝚜𝚝𝚎𝚒𝚗', url='https://t.me/space4renjith')
         ],[
             InlineKeyboardButton('🏠 Home', callback_data='start'),
             InlineKeyboardButton('Close 🔐', callback_data='close')
