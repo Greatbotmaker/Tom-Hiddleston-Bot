@@ -17,28 +17,40 @@ if os.environ.get("ENV", False):
 else:
     from config import Config
 
-@Client.on_message(filters.private & filters.command("start"))
-async def start_handler(bot: Client, event: Message):
-    await event.reply_text(
-        text=f"Hi, {event.from_user.mention}\n{Config.START_TEXT}",
-        quote=True,
-        reply_markup=InlineKeyboardMarkup(
-                buttons = [[
-        InlineKeyboardButton('➕ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕', url=f'http://t.me/OB_FILTERBOT?startgroup=botstart')
-        ],[
-
-        InlineKeyboardButton('👨🏻‍💻 𝙲𝚁𝙴𝙰𝚃𝙾𝚁', url=f't.me/OWDVER_BOT'),
-        InlineKeyboardButton('𝙲𝙷𝙰𝙽𝙽𝙴𝙻 📢', url=f't.me/OB_LINKS')
-    ],[
-        InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
-        InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")
-    ]]
-            try:
-            await client.send_message(
-                chat_id=message.chat.id,
-                text=Config.START_TEXT,
-                parse_mode='html',
-                disable_web_page_preview=True
+@Client.on_message(filters.private & filters.text)
+async def bot_pm(client: Bot, message: Message):
+    if message.text == "/start":
+        await client.send_message(
+            chat_id=message.chat.id,
+            text=config.START_TEXT.format(message.from_user.first_name),
+            parse_mode='html',
+            disable_web_page_preview=True
+        )
+        return
+    try:
+        query_message = message.text.split(" ")[-1]
+        query_bytes = query_message.encode("ascii")
+        base64_bytes = b64decode(query_bytes)
+        secret_query = base64_bytes.decode("ascii")
+    except Exception:
+        msg = await client.send_message(
+            chat_id=message.chat.id,
+            text=Presets.BOT_PM_TEXT,
+            reply_to_message_id=message.message_id
+        )
+        time.sleep(6)
+        try:
+            await msg.delete()
+            await message.delete()
+        except Exception:
+            pass
+        return
+    try:
+        await client.send_message(
+            chat_id=message.chat.id,
+            text=Presets.WELCOME_TEXT.format(message.from_user.first_name),
+            parse_mode='html',
+            disable_web_page_preview=True
         )
         if secret_query:
             for channel in Config.CHANNELS:
