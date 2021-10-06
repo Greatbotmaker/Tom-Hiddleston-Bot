@@ -18,12 +18,14 @@ if os.environ.get("ENV", False):
 else:
     from config import Config
 
-@Client.on_callback_query(filters.regex(r"^(start|help|about|close)$"), group=2)
-async def callback_data(bot, update: CallbackQuery):
-
-    query_data = update.data
-
-    if query_data == "start":
+@Client.on_message(filters.private & filters.text)
+async def bot_pm(client: Bot, message: Message):
+    if message.text == "/start":
+        await client.send_message(
+            chat_id=message.chat.id,
+            text=Presets.WELCOME_TEXT.format(message.from_user.first_name),
+            parse_mode='html',
+            disable_web_page_preview=True
         buttons = [[
         InlineKeyboardButton('➕ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕', url=f'http://t.me/OB_FILTERBOT?startgroup=botstart')
         ],[
