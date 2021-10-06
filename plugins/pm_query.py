@@ -6,6 +6,7 @@ import time
 
 from bot import Bot
 from presets import Presets
+from configs import Config
 from base64 import b64decode
 from helper.file_size import get_size
 from pyrogram.types import Message
