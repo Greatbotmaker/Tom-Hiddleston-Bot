@@ -40,17 +40,7 @@ async def start_handler(bot: Client, event: Message):
         InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
         InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")
     ]]
-            
 try:
-             await bot.send_message(
-        chat_id=update.chat.id,
-        text=configs.START_TEXT.format(
-                update.from_user.first_name)
-        reply_markup = InlineKeyboardMarkup(buttons)
-        parse_mode="html",
-        reply_to_message_id=update.message_id
-    )
-    try:
         await client.send_message(
             chat_id=message.chat.id,
             text=Config.START_TEXT,
