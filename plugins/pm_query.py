@@ -27,18 +27,6 @@ async def bot_pm(client: Bot, message: Message):
             disable_web_page_preview=True
         )
         return
-    try:
-        query_message = message.text.split(" ")[-1]
-        query_bytes = query_message.encode("ascii")
-        base64_bytes = b64decode(query_bytes)
-        secret_query = base64_bytes.decode("ascii")
-    except Exception:
-        msg = await client.send_message(
-            chat_id=message.chat.id,
-            text=Presets.BOT_PM_TEXT,
-            reply_to_message_id=message.message_id
-        )
-        time.sleep(6)
         try:
             await msg.delete()
             await message.delete()
