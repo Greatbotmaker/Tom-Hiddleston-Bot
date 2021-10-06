@@ -11,4 +11,4 @@ class Presets(object):
     PM_ERROR = "താഴെ ഉള്ള ബട്ടണിൽ ക്ലിക്ക് ചെയ്ത് ഗൂഗിളിൽ പോയി Correct Spelling കണ്ടുപിടിച്ച ശേഷം അത് കോപ്പി ചെയ്ത് ഇവിടെ Paste ചെയ്യുക"
     MEDIA_SEND_TEXT = "<code>മൂവിയുടെ ഫയലുകൾ PM ൽ അയച്ചിട്ടുണ്ട്</code>"
     NO_MEDIA = "താഴെ ഉള്ള ബട്ടണിൽ ക്ലിക്ക് ചെയ്ത് ഗൂഗിളിൽ പോയി Correct Spelling കണ്ടുപിടിച്ച ശേഷം അത് കോപ്പി ചെയ്ത് ഇവിടെ Paste ചെയ്യുക"
-    BLOCK_LIST = ['http://', 'Series', 'series', 'money heist', 'Money Heist', 'vikings', 'shang chi', 'Shang Chi', 'shang Chi', 'Shang chi', 'Shangchi', 'Vikings', 'loki', 'Loki', 'season', 'Season', 'Episode', 'episode', 'https://', '@', '#', 'bit.ly', 't.me', '/']
+    BLOCK_LIST = ['http://', 'bhramam', 'Bhramam', 'bramam', 'Bramam', 'Series', 'series', 'money heist', 'Money Heist', 'vikings', 'shang chi', 'Shang Chi', 'shang Chi', 'Shang chi', 'Shangchi', 'Vikings', 'loki', 'Loki', 'season', 'Season', 'Episode', 'episode', 'https://', '@', '#', 'bit.ly', 't.me', '/']
