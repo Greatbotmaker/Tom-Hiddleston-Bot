@@ -27,7 +27,7 @@ async def bot_pm(client: Bot, message: Message):
             text=Config.START_TEXT.format(message.from_user.first_name),
             parse_mode='html',
             disable_web_page_preview=True,
-            reply_to_message_id=update.message_id
+            reply_to_message_id=update.message_id,
             reply_markup=InlineKeyboardMarkup(
                 [
                                         [InlineKeyboardButton(
