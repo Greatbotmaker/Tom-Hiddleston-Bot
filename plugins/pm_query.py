@@ -84,5 +84,4 @@ async def callback_data(bot, update: CallbackQuery):
                             )
                         except FloodWait as e:
                             time.sleep(e.x)
-    except Exception: pass
         return
