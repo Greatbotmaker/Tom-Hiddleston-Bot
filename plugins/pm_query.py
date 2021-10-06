@@ -38,8 +38,9 @@ async def start_handler(bot: Client, event: Message):
         InlineKeyboardButton('𝙲𝙷𝙰𝙽𝙽𝙴𝙻 📢', url=f't.me/OB_LINKS')
     ],[
         InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
-        InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', buttontext=f'contact my owner)'
-    ]]   
+        InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")
+    ]]
+            
 try:
              await bot.send_message(
         chat_id=update.chat.id,
