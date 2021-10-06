@@ -26,9 +26,6 @@ else:
 
 @Client.on_message(filters.private & filters.command("start"))
 async def start_handler(bot: Client, event: Message):
-    FSub = await ForceSub(bot, event)
-    if FSub == 400:
-        return
     await event.reply_text(
         text=f"Hi, {event.from_user.mention}\n{Config.START_TEXT}",
         quote=True,
@@ -41,57 +38,17 @@ async def start_handler(bot: Client, event: Message):
         InlineKeyboardButton('𝙲𝙷𝙰𝙽𝙽𝙴𝙻 📢', url=f't.me/OB_LINKS')
     ],[
         InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
-        InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")
+        InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', buttontext=f'contact my owner)'
     ]]   
 try:
              await bot.send_message(
         chat_id=update.chat.id,
-        text=Translation.START_TEXT.format(
+        text=configs.START_TEXT.format(
                 update.from_user.first_name)
         reply_markup = InlineKeyboardMarkup(buttons)
         parse_mode="html",
         reply_to_message_id=update.message_id
     )
-
-@Client.on_message(filters.command(["help"]) & filters.private, group=1)
-async def help(bot, update):
-    buttons = [[
-        InlineKeyboardButton('🏠 Home', callback_data='start'),
-        InlineKeyboardButton('About 🚩', callback_data='about')
-    ],[
-        InlineKeyboardButton('❌', callback_data='close')
-    ]]
-    
-    reply_markup = InlineKeyboardMarkup(buttons)
-    
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.HELP_TEXT,
-        reply_markup=reply_markup,
-        parse_mode="html",
-        reply_to_message_id=update.message_id
-    )
-
-
-@Client.on_message(filters.command(["about"]) & filters.private, group=1)
-async def about(bot, update):
-    
-    buttons = [[
-        InlineKeyboardButton('🏠 Home', callback_data='start'),
-        InlineKeyboardButton('❌', callback_data='close')
-    ]]
-    reply_markup = InlineKeyboardMarkup(buttons)
-    
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.ABOUT_TEXT,
-        reply_markup=reply_markup,
-        disable_web_page_preview=True,
-        parse_mode="html",
-        reply_to_message_id=update.message_id
-    )
-
-
     try:
         await client.send_message(
             chat_id=message.chat.id,
