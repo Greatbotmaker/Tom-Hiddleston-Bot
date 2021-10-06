@@ -3,18 +3,11 @@
 import re
 import os
 import time
-import asyncio
-from pyrogram import Client, filters
-from asyncio import TimeoutError
-from pyrogram.errors import MessageNotModified
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
 from bot import Bot
 from presets import Presets
 from base64 import b64decode
 from helper.file_size import get_size
-from helper.forcesub import ForceSub
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait
 from pyrogram import Client, filters
@@ -40,12 +33,12 @@ async def start_handler(bot: Client, event: Message):
         InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
         InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")
     ]]
-try:
-        await client.send_message(
-            chat_id=message.chat.id,
-            text=Config.START_TEXT,
-            parse_mode='html',
-            disable_web_page_preview=True
+            try:
+            await client.send_message(
+                chat_id=message.chat.id,
+                text=Config.START_TEXT,
+                parse_mode='html',
+                disable_web_page_preview=True
         )
         if secret_query:
             for channel in Config.CHANNELS:
