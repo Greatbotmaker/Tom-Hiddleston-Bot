@@ -25,21 +25,22 @@ async def bot_pm(client: Bot, message: Message):
         await client.send_message(
             chat_id=update.chat.id,
             text=Config.START_TEXT.format(message.from_user.first_name),
-            reply_markup=reply_markup,
             parse_mode='html',
             disable_web_page_preview=True,
             reply_to_message_id=update.message_id
             reply_markup=InlineKeyboardMarkup(
-                [[
-        InlineKeyboardButton('➕ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕', url=f'http://t.me/OB_FILTERBOT?startgroup=botstart')
-        ],[
-        InlineKeyboardButton('👨🏻‍💻 𝙲𝚁𝙴𝙰𝚃𝙾𝚁', url=f't.me/OWDVER_BOT'),
-        InlineKeyboardButton('𝙲𝙷𝙰𝙽𝙽𝙴𝙻 📢', url=f't.me/OB_LINKS')
-    ],[
-        InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
-        InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")
-    ]]
-        )
+                [
+                                        [InlineKeyboardButton(
+                                            "➕ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕", url="http://t.me/OB_FILTEROBOT?startgroup=botstart")
+                                         ],
+                    [InlineKeyboardButton(
+                        "👨🏻‍💻 𝙲𝚁𝙴𝙰𝚃𝙾𝚁", url="http://t.me/OB_FILTEROBOT?startgroup=botstart"),
+                     [InlineKeyboardButton("𝙲𝙷𝙰𝙽𝙽𝙴𝙻 📢", url=f't.me/OB_LINKS')
+                    ],[
+                         [InlineKeyboardButton("🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃", url=f"t.me/OWDVER_BOT"),
+                          [InlineKeyboardButton("𝙷𝙴𝙻𝙿 ⚙️", callback_data="help")
+                          ]
+                ])
         return
     try:
         query_message = message.text.split(" ")[-1]
