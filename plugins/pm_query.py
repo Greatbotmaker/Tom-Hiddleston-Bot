@@ -40,10 +40,6 @@ async def bot_pm(client: Bot, message: Message):
             text=Config.HELP_TEXT,
             reply_to_message_id=message.message_id
         )
-        time.sleep(6)
-        try:
-            await msg.delete()
-            await message.delete()
         except Exception:
             pass
         return
