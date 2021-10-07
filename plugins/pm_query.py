@@ -13,7 +13,6 @@ from bot import Bot
 from presets import Presets
 from base64 import b64decode
 from helper.file_size import get_size
-from helper.forcesub import ForceSub
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait
 from pyrogram import Client, filters
@@ -26,9 +25,6 @@ else:
 
 @Client.on_message(filters.private & filters.command("start"))
 async def start_handler(bot: Client, event: Message):
-    FSub = await ForceSub(bot, event)
-    if FSub == 400:
-        return
     await event.reply_text(
         text=f"Hi, {event.from_user.mention}\n{Config.START_TEXT}",
         quote=True,
