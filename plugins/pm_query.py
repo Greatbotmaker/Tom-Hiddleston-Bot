@@ -40,8 +40,6 @@ async def bot_pm(client: Bot, message: Message):
             text=Config.HELP_TEXT,
             reply_to_message_id=message.message_id
         )
-        except Exception:
-            pass
         return
     try:
         await client.send_message(
