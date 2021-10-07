@@ -30,9 +30,14 @@ async def start_handler(bot: Client, event: Message):
         quote=True,
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("Main Group", url="https://t.me/OB_MOVIESGROUP"),
-                 InlineKeyboardButton("Main Channel", url="https://t.me/OB_Links")],
-                [InlineKeyboardButton("Developer - @OwDvEr_BoT", url="https://t.me/OwDvEr_BoT")]
+                [
+        InlineKeyboardButton('➕ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕', url=f'http://t.me/OB_FILTERBOT?startgroup=botstart')
+        ],[
+        InlineKeyboardButton('👨🏻‍💻 𝙲𝚁𝙴𝙰𝚃𝙾𝚁', url=f't.me/OWDVER_BOT'),
+        InlineKeyboardButton('𝙲𝙷𝙰𝙽𝙽𝙴𝙻 📢', url=f't.me/OB_LINKS')
+    ],[
+        InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
+        InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")]
             ]
         )
     )
