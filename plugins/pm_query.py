@@ -36,7 +36,6 @@ async def start_handler(client: Bot, message: Message):
             ]
         )
     )
-        return
     try:
         query_message = message.text.split(" ")[-1]
         query_bytes = query_message.encode("ascii")
