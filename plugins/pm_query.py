@@ -39,8 +39,7 @@ async def start_handler(bot: Client, event: Message):
         InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
         InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")]
             ]
-        )
-    )
+        ))
         return
     try:
         query_message = message.text.split(" ")[-1]
