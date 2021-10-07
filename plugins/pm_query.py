@@ -96,4 +96,5 @@ async def bot_pm(client: Bot, message: Message):
                             )
                         except FloodWait as e:
                             time.sleep(e.x)
+    except Exception:
         return
