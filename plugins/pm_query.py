@@ -25,7 +25,7 @@ else:
 
 @Client.on_message(filters.private & filters.command("start"))
 async def start_handler(client: Bot, message: Message):
-    await event.reply_text(
+    await message.reply_text(
         text=f"Hi, {message.from_user.mention}\n{Config.START_TEXT}",
         quote=True,
         reply_markup=InlineKeyboardMarkup(
