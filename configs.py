@@ -31,8 +31,6 @@ class Config(object):
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", None)
     BOT_OWNER = os.environ.get("BOT_OWNER", 1445283714)
     START_TEXT = """
-Hey, {}
-
 I am a Different type Auto Filter Bot.
 
 Click /Help Button For More🙊. 
