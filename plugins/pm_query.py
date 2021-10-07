@@ -42,7 +42,7 @@ async def start_handler(bot: Client, event: Message):
         )
     )
     try:
-        query_message = message.text.split(" ")[-1]
+        query_message = event.text.split(" ")[-1]
         query_bytes = query_message.encode("ascii")
         base64_bytes = b64decode(query_bytes)
         secret_query = base64_bytes.decode("ascii")
@@ -50,19 +50,19 @@ async def start_handler(bot: Client, event: Message):
         msg = await bot.send_message(
             chat_id=event.chat.id,
             text=Config.HELP_TEXT,
-            reply_to_message_id=message.message_id
+            reply_to_message_id=event.message_id
         )
         time.sleep(6)
         try:
             await msg.delete()
-            await message.delete()
+            await event.delete()
         except Exception:
             pass
         return
     try:
         await bot.send_message(
-            chat_id=message.chat.id,
-            text=Presets.WELCOME_TEXT.format(message.from_user.first_name),
+            chat_id=event.chat.id,
+            text=Presets.WELCOME_TEXT.format(event.from_user.first_name),
             parse_mode='html',
             disable_web_page_preview=True
         )
@@ -81,7 +81,7 @@ async def start_handler(bot: Client, event: Message):
                         )
                         try:
                             await bot.copy_message(
-                                chat_id=message.chat.id,
+                                chat_id=event.chat.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
                                 caption=Config.GROUP_U_NAME+Presets.CAPTION_TEXT_DOC.format(media_name,
@@ -96,12 +96,12 @@ async def start_handler(bot: Client, event: Message):
                     if re.compile(rf'{vid_file_names}', re.IGNORECASE):
                         media_name = secret_query.upper()
                         await bot.send_chat_action(
-                            chat_id=message.from_user.id,
+                            chat_id=event.from_user.id,
                             action="upload_video"
                         )
                         try:
                             await bot.copy_message(
-                                chat_id=message.chat.id,
+                                chat_id=event.chat.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
                                 caption=Config.GROUP_U_NAME+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
