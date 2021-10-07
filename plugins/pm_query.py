@@ -48,7 +48,7 @@ async def start_handler(bot: Client, event: Message):
         secret_query = base64_bytes.decode("ascii")
     except Exception:
         msg = await bot.send_message(
-            chat_id=message.chat.id,
+            chat_id=event.chat.id,
             text=Presets.BOT_PM_TEXT,
             reply_to_message_id=message.message_id
         )
