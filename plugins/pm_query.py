@@ -41,8 +41,12 @@ async def start_handler(bot: Client, event: Message):
             ]
         )
     )
-
-
+        return
+    try:
+        query_message = message.text.split(" ")[-1]
+        query_bytes = query_message.encode("ascii")
+        base64_bytes = b64decode(query_bytes)
+        secret_query = base64_bytes.decode("ascii")
     try:
         await client.send_message(
             chat_id=message.chat.id,
