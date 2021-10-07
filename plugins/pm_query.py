@@ -3,15 +3,19 @@
 import re
 import os
 import time
+import asyncio
+from pyrogram import Client, filters
+from asyncio import TimeoutError
+from pyrogram.errors import MessageNotModified
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 
 from bot import Bot
 from presets import Presets
-from configs import Config
 from base64 import b64decode
 from helper.file_size import get_size
+from helper.forcesub import ForceSub
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
 
 if os.environ.get("ENV", False):
@@ -19,32 +23,29 @@ if os.environ.get("ENV", False):
 else:
     from config import Config
 
-@Client.on_message(filters.private & filters.text)
-async def bot_pm(client: Bot, message: Message):
-    if message.text == "/start":
-        await client.send_message(
-            chat_id=message.chat.id,
-            text=Config.START_TEXT.format(message.from_user.first_name),
-            parse_mode='html',
-            disable_web_page_preview=True
-        )
+
+@Client.on_message(filters.private & filters.command("start"))
+async def start_handler(bot: Client, event: Message):
+    FSub = await ForceSub(bot, event)
+    if FSub == 400:
         return
-    try:
-        query_message = message.text.split(" ")[-1]
-        query_bytes = query_message.encode("ascii")
-        base64_bytes = b64decode(query_bytes)
-        secret_query = base64_bytes.decode("ascii")
-    except Exception:
-        msg = await client.send_message(
-            chat_id=message.chat.id,
-            text=Config.HELP_TEXT,
-            reply_to_message_id=message.message_id
+    await event.reply_text(
+        text=f"Hi, {event.from_user.mention}\n{Config.START_TEXT}",
+        quote=True,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("Main Group", url="https://t.me/OB_MOVIESGROUP"),
+                 InlineKeyboardButton("Main Channel", url="https://t.me/OB_Links")],
+                [InlineKeyboardButton("Developer - @OwDvEr_BoT", url="https://t.me/OwDvEr_BoT")]
+            ]
         )
-        return
+    )
+
+
     try:
         await client.send_message(
             chat_id=message.chat.id,
-            text=Config.START_TEXT.format(message.from_user.first_name),
+            text=Config.START_TEXT,
             parse_mode='html',
             disable_web_page_preview=True
         )
