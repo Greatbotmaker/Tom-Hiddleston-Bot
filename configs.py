@@ -35,7 +35,7 @@ Hey, {}
 
 I am a Different type Auto Filter Bot.
 
-Click Help Button For More🙊. 
+Click /Help Button For More🙊. 
 
 Made by @OwDvEr_BoT 🔥
     """
