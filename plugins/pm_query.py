@@ -3,11 +3,6 @@
 import re
 import os
 import time
-import asyncio
-from pyrogram import Client, filters
-from asyncio import TimeoutError
-from pyrogram.errors import MessageNotModified
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 
 from bot import Bot
 from presets import Presets
@@ -18,7 +13,7 @@ from pyrogram.errors import FloodWait
 from pyrogram import Client, filters
 
 if os.environ.get("ENV", False):
-    from configs import Config
+    from sample_config import Config
 else:
     from config import Config
 
@@ -41,6 +36,7 @@ async def start_handler(client: Bot, message: Message):
             ]
         )
     )
+        return
     try:
         query_message = message.text.split(" ")[-1]
         query_bytes = query_message.encode("ascii")
@@ -49,7 +45,7 @@ async def start_handler(client: Bot, message: Message):
     except Exception:
         msg = await client.send_message(
             chat_id=message.chat.id,
-            text=Config.HELP_TEXT,
+            text=Presets.BOT_PM_TEXT,
             reply_to_message_id=message.message_id
         )
         time.sleep(6)
@@ -62,7 +58,7 @@ async def start_handler(client: Bot, message: Message):
     try:
         await client.send_message(
             chat_id=message.chat.id,
-            text=Config.START_TEXT.format(message.from_user.mention),
+            text=Presets.WELCOME_TEXT.format(message.from_user.first_name),
             parse_mode='html',
             disable_web_page_preview=True
         )
