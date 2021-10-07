@@ -47,7 +47,7 @@ async def start_handler(bot: Client, event: Message):
         base64_bytes = b64decode(query_bytes)
         secret_query = base64_bytes.decode("ascii")
     except Exception:
-        msg = await client.send_message(
+        msg = await bot.send_message(
             chat_id=message.chat.id,
             text=Presets.BOT_PM_TEXT,
             reply_to_message_id=message.message_id
@@ -60,7 +60,7 @@ async def start_handler(bot: Client, event: Message):
             pass
         return
     try:
-        await client.send_message(
+        await bot.send_message(
             chat_id=message.chat.id,
             text=Presets.WELCOME_TEXT.format(message.from_user.first_name),
             parse_mode='html',
@@ -69,18 +69,18 @@ async def start_handler(bot: Client, event: Message):
         if secret_query:
             for channel in Config.CHANNELS:
                 # Looking for Document type in messages
-                async for messages in client.USER.search_messages(channel, secret_query, filter="document", limit=50):
+                async for messages in bot.USER.search_messages(channel, secret_query, filter="document", limit=50):
                     doc_file_names = messages.document.file_name
                     file_size = get_size(messages.document.file_size)
                     if re.compile(rf'{doc_file_names}', re.IGNORECASE):
                         media_name = messages.document.file_name.rsplit('.', 1)[0]
                         media_format = messages.document.file_name.split('.')[-1]
-                        await client.send_chat_action(
+                        await bot.send_chat_action(
                             chat_id=message.from_user.id,
                             action="upload_document"
                         )
                         try:
-                            await client.copy_message(
+                            await bot.copy_message(
                                 chat_id=message.chat.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
@@ -90,17 +90,17 @@ async def start_handler(bot: Client, event: Message):
                         except FloodWait as e:
                             time.sleep(e.x)
                 # Looking for video type in messages
-                async for messages in client.USER.search_messages(channel, secret_query, filter="video", limit=50):
+                async for messages in bot.USER.search_messages(channel, secret_query, filter="video", limit=50):
                     vid_file_names = messages.caption
                     file_size = get_size(messages.video.file_size)
                     if re.compile(rf'{vid_file_names}', re.IGNORECASE):
                         media_name = secret_query.upper()
-                        await client.send_chat_action(
+                        await bot.send_chat_action(
                             chat_id=message.from_user.id,
                             action="upload_video"
                         )
                         try:
-                            await client.copy_message(
+                            await bot.copy_message(
                                 chat_id=message.chat.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
