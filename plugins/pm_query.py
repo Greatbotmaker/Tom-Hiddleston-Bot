@@ -49,7 +49,7 @@ async def start_handler(client: Bot, message: Message):
     except Exception:
         msg = await client.send_message(
             chat_id=message.chat.id,
-            text=Presets.BOT_PM_TEXT,
+            text=Config.HELP_TEXT,
             reply_to_message_id=message.message_id
         )
         time.sleep(6)
