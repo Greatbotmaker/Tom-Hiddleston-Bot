@@ -32,7 +32,7 @@ async def start_handler(client: Bot, message: Message):
         InlineKeyboardButton('👨🏻‍💻 𝙲𝚁𝙴𝙰𝚃𝙾𝚁', url=f't.me/OWDVER_BOT'),
         InlineKeyboardButton('𝙲𝙷𝙰𝙽𝙽𝙴𝙻 📢', url=f't.me/OB_LINKS')
     ],[
-        InlineKeyboardButton('🔧 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f't.me/OWDVER_BOT'),
+        InlineKeyboardButton('🧑‍💻 DEV', url=f't.me/OWDVER_BOT'),
         InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")]
             ]
         )
