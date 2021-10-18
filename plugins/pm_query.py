@@ -37,12 +37,6 @@ async def start_handler(client: Bot, message: Message):
             ]
         )
     )
-    try:
-        await client.send_message(
-            chat_id=message.chat.id,
-            text="Uploading....",
-            parse_mode='html'
-        )
         if secret_query:
             for channel in Config.CHANNELS:
                 # Looking for Document type in messages
