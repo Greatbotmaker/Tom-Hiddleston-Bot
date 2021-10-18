@@ -37,14 +37,14 @@ async def start_handler(client: Bot, message: Message):
             ]
         )
     )
+        except FloodWait as e:
+            time.sleep(5)  
     try:
         await client.send_message(
             chat_id=message.chat.id,
             text="Uploading....",
             parse_mode='html'
         )
-        except FloodWait as e:
-            time.sleep(5)               
         if secret_query:
             for channel in Config.CHANNELS:
                 # Looking for Document type in messages
