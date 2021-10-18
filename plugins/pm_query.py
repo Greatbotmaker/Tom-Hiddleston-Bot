@@ -63,6 +63,8 @@ async def start_handler(client: Bot, message: Message):
             parse_mode='html',
             disable_web_page_preview=True
         )
+
+
 @Client.on_message(filters.command(["help"]) & filters.private, group=1
 async def help_handler(client: Bot, message: Message):
     await message.reply_text(
