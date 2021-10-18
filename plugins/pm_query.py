@@ -58,7 +58,7 @@ async def start_handler(client: Bot, message: Message):
     try:
         await client.send_message(
             chat_id=message.chat.id,
-            text=Config.START_TEXT.format(message.from_user.first_name),
+            text="Uploading....",
             parse_mode='html',
             disable_web_page_preview=True
         )
