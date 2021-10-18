@@ -37,8 +37,6 @@ async def start_handler(client: Bot, message: Message):
             ]
         )
     )
-        except FloodWait as e:
-            time.sleep(5)  
     try:
         await client.send_message(
             chat_id=message.chat.id,
