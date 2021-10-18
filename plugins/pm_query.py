@@ -37,6 +37,7 @@ async def start_handler(client: Bot, message: Message):
             ]
         )
     )
+    try:
         if secret_query:
             for channel in Config.CHANNELS:
                 # Looking for Document type in messages
