@@ -11,6 +11,7 @@ from helper.file_size import get_size
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait
 from pyrogram import Client, filters
+from pyrogram 
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 if os.environ.get("ENV", False):
@@ -61,10 +62,39 @@ async def start_handler(client: Bot, message: Message):
             parse_mode='html',
             disable_web_page_preview=True
         )
+@Client.on_message(filters.private & filters.command("help"))
+async def help_handler(client: Bot, message: Message):
+    await message.reply_text(
+        text=f"{Config.HELP_TEXT}",
+        quote=True,
+                reply_markup=InlineKeyboardMarkup(
+            [
+                [
+        InlineKeyboardButton('➕ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕', url=f'http://t.me/OB_FILTEROBOT?startgroup=botstart')
+        ],[
+        InlineKeyboardButton('👨🏻‍💻 𝙲𝚁𝙴𝙰𝚃𝙾𝚁', url=f't.me/OWDVER_BOT'),
+        InlineKeyboardButton('𝙲𝙷𝙰𝙽𝙽𝙴𝙻 📢', url=f't.me/OB_LINKS')
+    ],[
+        InlineKeyboardButton('🧑‍💻 DEV', url=f't.me/space4renjith'),
+        InlineKeyboardButton('𝙷𝙴𝙻𝙿 ⚙️', callback_data="help")]
+            ]
+        )
+    )
+    try:
+        query_message = message.text.split(" ")[-1]
+        query_bytes = query_message.encode("ascii")
+        base64_bytes = b64decode(query_bytes)
+        secret_query = base64_bytes.decode("ascii")
+    except Exception:
+        msg = await client.send_message(
+            chat_id=message.chat.id,
+            text=Presets.BOT_PM_TEXT,
+            reply_to_message_id=message.message_id
+        )
         if secret_query:
             for channel in Config.CHANNELS:
                 # Looking for Document type in messages
-                async for messages in client.USER.search_messages(channel, secret_query, filter="document", limit=50):
+                async for messages in client.USER.search_messages(channel, secret_query, filter="document", limit=20):
                     doc_file_names = messages.document.file_name
                     file_size = get_size(messages.document.file_size)
                     if re.compile(rf'{doc_file_names}', re.IGNORECASE):
@@ -85,7 +115,7 @@ async def start_handler(client: Bot, message: Message):
                         except FloodWait as e:
                             time.sleep(e.x)
                 # Looking for video type in messages
-                async for messages in client.USER.search_messages(channel, secret_query, filter="video", limit=50):
+                async for messages in client.USER.search_messages(channel, secret_query, filter="video", limit=20):
                     vid_file_names = messages.caption
                     file_size = get_size(messages.video.file_size)
                     if re.compile(rf'{vid_file_names}', re.IGNORECASE):
