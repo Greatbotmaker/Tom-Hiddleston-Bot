@@ -60,7 +60,7 @@ async def start_handler(client: Bot, message: Message):
                                                                                             media_format, file_size)
                             )
                         except FloodWait as e:
-                            time.sleep(5)
+                            time.sleep(e.x)
                 # Looking for video type in messages
                 async for messages in client.USER.search_messages(channel, secret_query, filter="video", limit=30):
                     vid_file_names = messages.caption
@@ -79,6 +79,6 @@ async def start_handler(client: Bot, message: Message):
                                 caption=Config.GROUP_U_NAME+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
                             )
                         except FloodWait as e:
-                            time.sleep(86400)
+                            time.sleep(e.x)
     except Exception:
         return
