@@ -55,10 +55,12 @@ async def start_handler(client: Bot, message: Message):
             parse_mode='html',
             disable_web_page_preview=True
         )
+                        except FloodWait as e:
+                            time.sleep(5)
         if secret_query:
             for channel in Config.CHANNELS:
                 # Looking for Document type in messages
-                async for messages in client.USER.search_messages(channel, secret_query, filter="document", limit=50):
+                async for messages in client.USER.search_messages(channel, secret_query, filter="document", limit=30):
                     doc_file_names = messages.document.file_name
                     file_size = get_size(messages.document.file_size)
                     if re.compile(rf'{doc_file_names}', re.IGNORECASE):
@@ -77,9 +79,9 @@ async def start_handler(client: Bot, message: Message):
                                                                                             media_format, file_size)
                             )
                         except FloodWait as e:
-                            time.sleep(e.x)
+                            time.sleep(86400)
                 # Looking for video type in messages
-                async for messages in client.USER.search_messages(channel, secret_query, filter="video", limit=50):
+                async for messages in client.USER.search_messages(channel, secret_query, filter="video", limit=30):
                     vid_file_names = messages.caption
                     file_size = get_size(messages.video.file_size)
                     if re.compile(rf'{vid_file_names}', re.IGNORECASE):
@@ -96,6 +98,6 @@ async def start_handler(client: Bot, message: Message):
                                 caption=Config.GROUP_U_NAME+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
                             )
                         except FloodWait as e:
-                            time.sleep(e.x)
+                            time.sleep(86400)
     except Exception:
         return
