@@ -48,12 +48,6 @@ async def start_handler(client: Bot, message: Message):
             text=Presets.BOT_PM_TEXT,
             reply_to_message_id=message.message_id
         )
-        try:
-            await msg.delete()
-            await message.delete()
-        except Exception:
-            pass
-        return
     try:
         await client.send_message(
             chat_id=message.chat.id,
