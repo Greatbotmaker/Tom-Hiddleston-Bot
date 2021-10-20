@@ -5,32 +5,40 @@
   "website": "https://github.com/owdver/DQ40",
   "repository": "https://github.com/owdver/DQ40",
   "env": {
-        "API_ID": {
+        "APP_ID": {
           "description": "Get this value from https://my.telegram.org", "required": true
         },
         "API_HASH": {
-          "description": "Get this value from https://my.telegram.org" , "required": true
+          "description": "Get this value from https://my.telegram.org", "required": true
         },
-        "TG_BOT_TOKEN": {
-          "description": "Get Bot Token From BotFather Bot","required": true
+        "BOT_TOKEN": {
+          "description": "Get Bot Token From BotFather Bot", "required": true
         },
         "AUTH_USERS": {
-          "description": "List of userIDs separated by <space>","required": true
+          "description": "List of userIDs separated by <space>", "required": true
         },
-          "UPDATES_CHANNEL": {
-            "description": "ID of a Channel which you want to do Force Sub to use the bot. Example: -100123456789",
-            "required": true
+        "UPDATES_CHANNEL": {
+            "description": "ID of a Channel which you want to do Force Sub to use the bot. Example: -100123456789", "required": true
+        },
+        "MONGODB_URI": {
+            "description": "MongoDB Database URI for Saving UserID for Broadcast. Tutorial: https://www.youtube.com/watch?v=aXlF80Cn7iU", "required": true
+        },
+        "LOG_CHANNEL": {
+            "description": "Logs Channel ID for some Tracking XD. Example: -100123456789", "required": true
         },
         "CHANNELS": {
-          "description": "List of Channel IDs separated by <space>","required": true
+          "description": "List of Channel IDs separated by <space>", "required": true
         },
-        "TG_USER_SESSION": {"description": "String Session from an admin user","required": true
+        "USER_SESSION": {"description": "String Session from an admin user", "required": true
         },
-        "GROUP_U_NAME": {
-          "description": "Username of the group to tag in sending medias","required": false
+        "BOTTOM_CAPTION": {
+          "description": "Username of the group to tag in sending medias", "required": false
+        },
+        "BROADCAST_AS_COPY": {
+            "description": "Broadcast as Copy or with Forward Tag. Value should be True/False.", "required": true
         },
         "BOT_OWNER": {
-          "description": "BOT_OWNER", 1445283714","required": true
+          "description": "BOT_OWNER", "Bot Owner Telegram User Id", "required": true
         },
         "ENV": {"description": "Set this to ANYTHING","value": "ANYTHING"
         }
