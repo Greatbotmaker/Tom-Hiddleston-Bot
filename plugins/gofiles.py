@@ -10,8 +10,7 @@ from base64 import b64encode
 from init import user_message
 from helper.file_size import get_size
 from pyrogram import Client, filters
-from pyrogram.errors import FloodWait
-from pyrogram import errors
+from pyrogram.errors import FloodWait, ButtonDataInvalid, UserNotParticipant, UserAlreadyParticipant
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 if os.environ.get("ENV", False):
@@ -66,7 +65,7 @@ async def query_mgs(client: Bot, message: Message):
                                 chat_id=message.from_user.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
-                                caption=Config.GROUP_U_NAME+Presets.CAPTION_TEXT_DOC.format(media_name,
+                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_DOC.format(media_name,
                                                                                             media_format, file_size)
                             )
                         except FloodWait as e:
@@ -104,7 +103,7 @@ async def query_mgs(client: Bot, message: Message):
                                 chat_id=message.from_user.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
-                                caption=Config.GROUP_U_NAME+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
+                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
                             )
                         except FloodWait as e:
                             time.sleep(e.x)
