@@ -24,6 +24,7 @@ class Config(object):
     API_ID = int(os.environ.get("API_ID", ""))
     API_HASH = os.environ.get("API_HASH", "")
     TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
+    UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", "@OB_LINKS")
     AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
     CHANNELS = set(int(x) for x in os.environ.get("CHANNELS", "").split())
     TG_USER_SESSION = os.environ.get("TG_USER_SESSION", "")
