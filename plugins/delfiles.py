@@ -7,10 +7,9 @@ from bot import Bot
 from presets import Presets
 from pyrogram import filters
 from pyrogram.types import Message
-from pyrogram.errors import FloodWait
+from pyrogram.errors import FloodWait, ChatAdminRequired
 from helper.get_messages import get_messages
 from helper.custom_filter import allowed_chat_filter
-from pyrogram.errors import ChatAdminRequired
 
 if bool(os.environ.get("ENV", False)):
     from configs import Config
