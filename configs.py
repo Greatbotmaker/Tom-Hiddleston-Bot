@@ -32,7 +32,6 @@ class Config(object):
     BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False))
     USER_SESSION = os.environ.get("USER_SESSION", "")
     BOTTOM_CAPTION = os.environ.get("BOTTOM_CAPTION", False)
-    UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", None)
     BOT_OWNER = os.environ.get("BOT_OWNER", 1445283714)
     START_TEXT = """
 I am a Different type Auto Filter Bot.
