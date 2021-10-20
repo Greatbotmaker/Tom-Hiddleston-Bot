@@ -6,7 +6,7 @@ import psutil
 import shutil
 import string
 import asyncio
-from pyromod import listen
+import pyromod.listen
 from pyrogram import Client, filters
 from base64 import b64decode
 from asyncio import TimeoutError
