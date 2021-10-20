@@ -15,10 +15,6 @@ class Database:
         return dict(
             id=id,
             join_date=datetime.date.today().isoformat(),
-            prefix=None,
-            upload_as_doc=True,
-            thumbnail=None,
-            caption=None
         )
 
     async def add_user(self, id):
@@ -39,31 +35,3 @@ class Database:
 
     async def delete_user(self, user_id):
         await self.col.delete_many({'id': int(user_id)})
-
-    async def set_prefix(self, id, prefix):
-        await self.col.update_one({'id': id}, {'$set': {'prefix': prefix}})
-
-    async def get_prefix(self, id):
-        user = await self.col.find_one({'id': int(id)})
-        return user.get('prefix', None)
-
-    async def set_upload_as_doc(self, id, upload_as_doc):
-        await self.col.update_one({'id': id}, {'$set': {'upload_as_doc': upload_as_doc}})
-
-    async def get_upload_as_doc(self, id):
-        user = await self.col.find_one({'id': int(id)})
-        return user.get('upload_as_doc', False)
-
-    async def set_thumbnail(self, id, thumbnail):
-        await self.col.update_one({'id': id}, {'$set': {'thumbnail': thumbnail}})
-
-    async def get_thumbnail(self, id):
-        user = await self.col.find_one({'id': int(id)})
-        return user.get('thumbnail', None)
-
-    async def set_caption(self, id, caption):
-        await self.col.update_one({'id': id}, {'$set': {'caption': caption}})
-
-    async def get_caption(self, id):
-        user = await self.col.find_one({'id': int(id)})
-        return user.get('caption', None)
