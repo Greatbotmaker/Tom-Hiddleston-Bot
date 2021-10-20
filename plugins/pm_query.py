@@ -1,22 +1,27 @@
 # -----------------------------------------------------------------|| https://github.com/owdver/DQ40 ||----------------------------------------------------------------- #
-
 import re
 import os
 import time
+import psutil
+import shutil
+import string
+import asyncio
+from pyromod import listen
+from pyrogram import Client, filters
+from base64 import b64decode
+from asyncio import TimeoutError
+from pyrogram.errors import MessageNotModified
+from pyrogram.errors import FloodWait
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 
 from bot import Bot
 from presets import Presets
-from base64 import b64decode
+from configs import Config
 from helper.file_size import get_size
-from pyrogram.types import Message
-from pyrogram.errors import FloodWait
-from pyrogram import Client, filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-
-if os.environ.get("ENV", False):
-    from configs import Config
-else:
-    from config import Config
+from helpers.database.access_db import db
+from helpers.forcesub import ForceSub
+from helpers.broadcast import broadcast_handler
+from helpers.database.add_user import AddUserToDatabase
 
 
 @Client.on_message(filters.private & filters.command("start"))
