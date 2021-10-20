@@ -26,7 +26,7 @@ async def ForceSub(client: Bot, message: Message):
     try:
         invite_link = await client.create_chat_invite_link(chat_id=(int(Config.UPDATES_CHANNEL) if Config.UPDATES_CHANNEL.startswith("-100") else Config.UPDATES_CHANNEL))
     except FloodWait as e:
-        await asyncio.sleep(e.x)
+        await time.sleep(e.x)
         fix_ = await ForceSub(client, message)
         return fix_
     except Exception as err:
