@@ -24,8 +24,20 @@ from helpers.broadcast import broadcast_handler
 from helpers.database.add_user import AddUserToDatabase
 
 
-@Client.on_message(filters.private & filters.command("start"))
+DQ = Client(
+    session_name=Config.USER_SESSION,
+    api_id=Config.APP_ID,
+    api_hash=Config.API_HASH,
+    bot_token=Config.BOT_TOKEN
+)
+
+
+@DQ.on_message(filters.private & filters.command("start"))
 async def start_handler(client: Bot, message: Message):
+    await AddUserToDatabase(client, message)
+    FSub = await ForceSub(client, message)
+    if FSub == 400:
+        return
     await message.reply_text(
         text=f"Hi, {message.from_user.mention}\n{Config.START_TEXT}",
         quote=True,
