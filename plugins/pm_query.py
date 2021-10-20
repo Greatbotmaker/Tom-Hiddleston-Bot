@@ -56,7 +56,7 @@ async def start_handler(client: Bot, message: Message):
                                 chat_id=message.chat.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
-                                caption=Config.GROUP_U_NAME+Presets.CAPTION_TEXT_DOC.format(media_name,
+                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_DOC.format(media_name,
                                                                                             media_format, file_size)
                             )
                         except FloodWait as e:
@@ -76,7 +76,7 @@ async def start_handler(client: Bot, message: Message):
                                 chat_id=message.chat.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
-                                caption=Config.GROUP_U_NAME+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
+                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
                             )
                         except FloodWait as e:
                             time.sleep(e.x)
