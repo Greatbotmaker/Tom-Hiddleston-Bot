@@ -20,8 +20,8 @@ class Bot(Client):
         super().__init__(
             "gofilesbot",
             api_hash=Config.API_HASH,
-            api_id=Config.API_ID,
-            bot_token=Config.TG_BOT_TOKEN,
+            api_id=Config.APP_ID,
+            bot_token=Config.BOT_TOKEN,
             plugins={
                 "root": "plugins"
             },
