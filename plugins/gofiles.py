@@ -11,6 +11,7 @@ from init import user_message
 from helper.file_size import get_size
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
+from pyrogram import errors
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 if os.environ.get("ENV", False):
