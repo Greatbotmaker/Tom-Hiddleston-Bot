@@ -33,10 +33,6 @@ DQ = Client(
 
 @DQ.on_message(filters.private & filters.command("start"))
 async def start_handler(client: Bot, message: Message):
-    await AddUserToDatabase(client, message)
-    FSub = await ForceSub(client, message)
-    if FSub == 400:
-        return
     await message.reply_text(
         text=f"Hi, {message.from_user.mention}\n{Config.START_TEXT}",
         quote=True,
