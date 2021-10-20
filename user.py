@@ -17,7 +17,7 @@ class User(Client):
             Config.USER_SESSION,
             api_hash=Config.API_HASH,
             api_id=Config.APP_ID,
-            workers=400
+            workers=4
         )
         self.LOGGER = LOGGER
 
