@@ -17,10 +17,6 @@ from bot import Bot
 from presets import Presets
 from configs import Config
 from helper.file_size import get_size
-from helper.database.access_db import db
-from helper.forcesub import ForceSub
-from helper.broadcast import broadcast_handler
-from helper.database.add_user import AddUserToDatabase
 
 
 DQ = Client(
