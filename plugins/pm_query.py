@@ -2,33 +2,23 @@
 import re
 import os
 import time
-import psutil
-import shutil
-import string
-import asyncio
-from pyrogram import Client, filters
-from base64 import b64decode
-from asyncio import TimeoutError
-from pyrogram.errors import MessageNotModified
-from pyrogram.errors import FloodWait
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 
 from bot import Bot
 from presets import Presets
-from configs import Config
+from base64 import b64decode
 from helper.file_size import get_size
+from pyrogram.types import Message
+from pyrogram.errors import FloodWait
+from pyrogram import Client, filters
+
+if os.environ.get("ENV", False):
+    from sample_config import Config
+else:
+    from config import Config
 
 
-DQ = Client(
-    session_name=Config.USER_SESSION,
-    api_id=Config.APP_ID,
-    api_hash=Config.API_HASH,
-    bot_token=Config.BOT_TOKEN
-)
-
-
-@DQ.on_message(filters.private & filters.command("start"))
-async def start_handler(client: Bot, message: Message):
+@Client.on_message(filters.private & filters.command("start"))
+async def bot_pm(client: Bot, message: Message):
     await message.reply_text(
         text=f"Hi, {message.from_user.mention}\n{Config.START_TEXT}",
         quote=True,
