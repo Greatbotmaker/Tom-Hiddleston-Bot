@@ -8,8 +8,8 @@ if bool(os.environ.get("ENV", False)):
     from configs import Config
     from configs import LOGGER
 else:
-    from config import Config
-    from config import LOGGER
+    from configs import Config
+    from configs import LOGGER
 
 
 class Bot(Client):

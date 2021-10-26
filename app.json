@@ -17,12 +17,6 @@
         "AUTH_USERS": {
           "description": "List of userIDs separated by <space>", "required": true
         },
-        "UPDATES_CHANNEL": {
-            "description": "ID of a Channel which you want to do Force Sub to use the bot. Example: -100123456789", "required": true
-        },
-        "MONGODB_URI": {
-            "description": "MongoDB Database URI for Saving UserID for Broadcast. Tutorial: https://www.youtube.com/watch?v=aXlF80Cn7iU", "required": true
-        },
         "LOG_CHANNEL": {
             "description": "Logs Channel ID for some Tracking XD. Example: -100123456789", "required": true
         },
@@ -33,9 +27,6 @@
         },
         "BOTTOM_CAPTION": {
           "description": "Username of the group to tag in sending medias", "required": false
-        },
-        "BROADCAST_AS_COPY": {
-            "description": "Broadcast as Copy or with Forward Tag. Value should be True/False.", "required": true
         },
         "BOT_OWNER": {
           "description": "BOT_OWNER", "Bot Owner Telegram User Id", "required": true

@@ -21,18 +21,14 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
 class Config(object):
-    APP_ID = int(os.environ.get("APP_ID", ""))
-    API_HASH = os.environ.get("API_HASH", "")
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-    UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", "")
-    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
-    CHANNELS = set(int(x) for x in os.environ.get("CHANNELS", "").split())
-    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", -100))
-    MONGODB_URI = os.environ.get("MONGODB_URI", "")
-    BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False))
-    USER_SESSION = os.environ.get("USER_SESSION", "")
+    APP_ID = int(os.environ.get("APP_ID", "3596842"))
+    API_HASH = os.environ.get("API_HASH", "d8f83c77dd83a3f4b8d64da78ddebe1a")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "2063631417:AAFXYhtC3Xs_wPYaG2WZZhk9R9AP7Xt-iyI")
+    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1581771541 829696828").split())
+    CHANNELS = set(int(x) for x in os.environ.get("CHANNELS", "-1001498423975").split())
+    USER_SESSION = os.environ.get("USER_SESSION", "BQARJCPnXSE2HdVAoCUFjHUQ0nWMk_G3sFbaBQPB7VyDvi_6uNNodUI3GFnY6uZOzmVybbd-hwERF1Zg7XuPOali34v5ANXIK1qfUWUNtL9TQ-lzT9vLQejoA7AYwu0LHOc37DcryZ_r3K-vq91gU8RQcjDBa0owll-ESvVjErknHq56BtuHvePm63C4bthcHqeHY8n0zYYEvR0gMVxNpjs_1nsf7ltxP5nkb_yiQQX5xsWiEtmQhfQqx1aqCuGdjziIQ-7QE8tdZwn-NhwxVIhBGSrkDwSjcxnsO-2VFx09EOgjQH7WigeJHOkNK1SQWBPE9rN2iazCUo-UbkqMIVkJXxF-8AA")
     BOTTOM_CAPTION = os.environ.get("BOTTOM_CAPTION", False)
-    BOT_OWNER = os.environ.get("BOT_OWNER", 1445283714)
+    ENV = os.environ.get("ENV", "ANYTHING")
     START_TEXT = """
 I am a Different type Auto Filter Bot.
 
