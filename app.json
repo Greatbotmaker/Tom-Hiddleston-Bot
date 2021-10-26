@@ -28,9 +28,6 @@
         "BOTTOM_CAPTION": {
           "description": "Username of the group to tag in sending medias", "required": false
         },
-        "BOT_OWNER": {
-          "description": "BOT_OWNER", "Bot Owner Telegram User Id", "required": true
-        },
         "ENV": {"description": "Set this to ANYTHING","value": "ANYTHING"
         }
   },
