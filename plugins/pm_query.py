@@ -12,7 +12,7 @@ from pyrogram.errors import FloodWait
 from pyrogram import Client, filters
 
 if os.environ.get("ENV", False):
-    from sample_config import Config
+    from configs import Config
 else:
     from config import Config
 
