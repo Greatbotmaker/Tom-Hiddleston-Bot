@@ -26,7 +26,7 @@ class Config(object):
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "2063631417:AAFXYhtC3Xs_wPYaG2WZZhk9R9AP7Xt-iyI")
     AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1581771541 829696828").split())
     CHANNELS = set(int(x) for x in os.environ.get("CHANNELS", "-1001498423975").split())
-    USER_SESSION = os.environ.get("USER_SESSION", "BQARJCPnXSE2HdVAoCUFjHUQ0nWMk_G3sFbaBQPB7VyDvi_6uNNodUI3GFnY6uZOzmVybbd-hwERF1Zg7XuPOali34v5ANXIK1qfUWUNtL9TQ-lzT9vLQejoA7AYwu0LHOc37DcryZ_r3K-vq91gU8RQcjDBa0owll-ESvVjErknHq56BtuHvePm63C4bthcHqeHY8n0zYYEvR0gMVxNpjs_1nsf7ltxP5nkb_yiQQX5xsWiEtmQhfQqx1aqCuGdjziIQ-7QE8tdZwn-NhwxVIhBGSrkDwSjcxnsO-2VFx09EOgjQH7WigeJHOkNK1SQWBPE9rN2iazCUo-UbkqMIVkJXxF-8AA")
+    USER_SESSION = os.environ.get("USER_SESSION", "BQBWKVw9MurhpjQTswYAFvbTTK1XNHSDbHHidbooUSD3I9sq7CekR3_lNuZrzWUrVcG5V3nx1E-85nl_183PPs8CK3RyoNhLu9XwNXj8qtjqt4rG5Gt8gQWIvhO9lpUZMx7nBD_31fwvKGaA0nQB1tRFfXbed7IBqDWNvfZTpToiq8YCoE2w9ftlFinW-RLIzESlIkGNtMeI5ekRuDjErEVIvAL526QFMt0ScJ-Ac8Wu0Bxeh5bYl7lX30nOoLz9ZggK-zc0ggoYsbTO9d-0YSt7uIdSDN3ekFBM0PC8txDkbd6Qi3RV2Msm7RjoQHelh9M97yI0gGX-OLXsKSTgkVe2XxF-8AA")
     BOTTOM_CAPTION = os.environ.get("BOTTOM_CAPTION", False)
     ENV = os.environ.get("ENV", "ANYTHING")
     START_TEXT = """
