@@ -21,7 +21,7 @@ else:
 @Client.on_message(filters.private & filters.text)
 async def bot_pm(client: Bot, message: Message):
     if message.text == "/start":
-        await client.reply_text(
+        await client.send_message(
             chat_id=message.chat.id,
             text=f"Hi, {message.from_user.mention}\n{Config.START_TEXT}",
             parse_mode='html',
