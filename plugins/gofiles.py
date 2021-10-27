@@ -14,7 +14,7 @@ from pyrogram.errors import FloodWait
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 if os.environ.get("ENV", False):
-    from sample_config import Config
+    from configs import Config
 else:
     from config import Config
 
