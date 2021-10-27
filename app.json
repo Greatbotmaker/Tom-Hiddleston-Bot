@@ -2,47 +2,25 @@
   "name": "GoFilesBot",
   "description": "Telegram's best Open Source ALL-In-One Multi Purpose RoBot. Create your Fork now.",
   "keywords": ["telegram", "best", "filter", "bot"],
-  "website": "https://github.com/owdver/DQ40",
-  "repository": "https://github.com/owdver/DQ40",
+  "website": "https://github.com/m4mallu/gofilesbot",
+  "repository": "https://github.com/m4mallu/gofilesbot",
   "env": {
-        "APP_ID": {
-          "description": "Get this value from https://my.telegram.org", "required": true
-        },
-        "API_HASH": {
-          "description": "Get this value from https://my.telegram.org", "required": true
-        },
-        "BOT_TOKEN": {
-          "description": "Get Bot Token From BotFather Bot", "required": true
-        },
-        "AUTH_USERS": {
-          "description": "List of userIDs separated by <space>", "required": true
-        },
-        "LOG_CHANNEL": {
-            "description": "Logs Channel ID for some Tracking XD. Example: -100123456789", "required": true
-        },
-        "CHANNELS": {
-          "description": "List of Channel IDs separated by <space>", "required": true
-        },
-        "USER_SESSION": {"description": "String Session from an admin user", "required": true
-        },
-        "BOTTOM_CAPTION": {
-          "description": "Username of the group to tag in sending medias", "required": false
-        },
-        "ENV": {"description": "Set this to ANYTHING","value": "ANYTHING"
-        }
+        "APP_ID": {"description": "Get this value from https://my.telegram.org", "required": true},
+        "API_HASH": {"description": "Get this value from https://my.telegram.org" , "required": true},
+        "BOT_TOKEN": {"description": "Get Bot Token From BotFather Bot","required": true},
+        "AUTH_USERS": {"description": "List of userIDs separated by <space>","required": true},
+        "CHANNELS": {"description": "List of Channel IDs separated by <space>","required": true},
+        "USER_SESSION": {"description": "String Session from an admin user","required": true},
+        "BOTTOM_CAPTION": {"description": "Username of the group to tag in sending medias","required": false},
+        "ENV": {"description": "Set this to ANYTHING","value": "ANYTHING"}
   },
-  "buildpacks": [ 
-        {
-            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-        }, 
-        { 
-            "url": "heroku/python"
-        }
-    ],
-    "formation": {
-        "worker": {
-            "quantity": 1,
-            "size": "free"
-        }
+  "buildpacks": [
+    {"url": "heroku/python"}
+  ],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
     }
+  }
 }
