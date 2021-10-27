@@ -23,7 +23,7 @@ async def bot_pm(client: Bot, message: Message):
     if message.text == "/start":
         await client.send_message(
             chat_id=message.chat.id,
-            text=Presets.WELCOME_TEXT.format(message.from_user.first_name),
+            text=Config.START_TEXT.format(message.from_user.first_name),
             parse_mode='html',
             disable_web_page_preview=True
         )
@@ -49,7 +49,7 @@ async def bot_pm(client: Bot, message: Message):
     try:
         await client.send_message(
             chat_id=message.chat.id,
-            text=Presets.WELCOME_TEXT.format(message.from_user.first_name),
+            text=Config.START_TEXT.format(message.from_user.first_name),
             parse_mode='html',
             disable_web_page_preview=True
         )
@@ -71,7 +71,7 @@ async def bot_pm(client: Bot, message: Message):
                                 chat_id=message.chat.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
-                                caption=Config.GROUP_U_NAME+Presets.CAPTION_TEXT_DOC.format(media_name,
+                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_DOC.format(media_name,
                                                                                             media_format, file_size)
                             )
                         except FloodWait as e:
@@ -91,7 +91,7 @@ async def bot_pm(client: Bot, message: Message):
                                 chat_id=message.chat.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
-                                caption=Config.GROUP_U_NAME+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
+                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
                             )
                         except FloodWait as e:
                             time.sleep(e.x)
