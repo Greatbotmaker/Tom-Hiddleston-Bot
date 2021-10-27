@@ -21,19 +21,21 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
 class Config(object):
-    APP_ID = int(os.environ.get("APP_ID", "3596842"))
-    API_HASH = os.environ.get("API_HASH", "d8f83c77dd83a3f4b8d64da78ddebe1a")
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "2089774427:AAGIyfdvaqF7NCk0nrnVJOIpGLSqD5qLSSM")
-    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1581771541 829696828").split())
-    CHANNELS = set(int(x) for x in os.environ.get("CHANNELS", "-1001496561987").split())
-    USER_SESSION = os.environ.get("USER_SESSION", "BQBWKVw9MurhpjQTswYAFvbTTK1XNHSDbHHidbooUSD3I9sq7CekR3_lNuZrzWUrVcG5V3nx1E-85nl_183PPs8CK3RyoNhLu9XwNXj8qtjqt4rG5Gt8gQWIvhO9lpUZMx7nBD_31fwvKGaA0nQB1tRFfXbed7IBqDWNvfZTpToiq8YCoE2w9ftlFinW-RLIzESlIkGNtMeI5ekRuDjErEVIvAL526QFMt0ScJ-Ac8Wu0Bxeh5bYl7lX30nOoLz9ZggK-zc0ggoYsbTO9d-0YSt7uIdSDN3ekFBM0PC8txDkbd6Qi3RV2Msm7RjoQHelh9M97yI0gGX-OLXsKSTgkVe2XxF-8AA")
+    APP_ID = int(os.environ.get("APP_ID", ""))
+    API_HASH = os.environ.get("API_HASH", "")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
+    UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", "")
+    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
+    CHANNELS = set(int(x) for x in os.environ.get("CHANNELS", "").split())
+    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", -100))
+    MONGODB_URI = os.environ.get("MONGODB_URI", "")
+    BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False))
+    USER_SESSION = os.environ.get("USER_SESSION", "")
     BOTTOM_CAPTION = os.environ.get("BOTTOM_CAPTION", False)
-    ENV = os.environ.get("ENV", "ANYTHING")
+    BOT_OWNER = os.environ.get("BOT_OWNER", 1445283714)
     START_TEXT = """
 I am a Different type Auto Filter Bot.
-
 Click /Help Button For More🙊. 
-
 Made by @OwDvEr_BoT 🔥
     """
     HELP_TEXT = """
@@ -48,8 +50,6 @@ Made by @OwDvEr_BoT 🔥
 -> Then Choose The Group Which You Need To Add Me  
 -> Then Make Me Admin
 </i>
-
-
 @OwDvEr_BoT
 """
 
