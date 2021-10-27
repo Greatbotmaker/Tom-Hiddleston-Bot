@@ -1,9 +1,2 @@
-pyrogram
+Pyrogram==1.1.9
 TgCrypto
-dnspython
-aiofiles
-motor
-Pillow
-hachoir
-pyromod
-psutil
