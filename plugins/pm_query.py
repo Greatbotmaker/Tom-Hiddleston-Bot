@@ -18,11 +18,15 @@ else:
     from config import Config
 
 
-@Client.on_message(filters.private & filters.command("start"))
+@Client.on_message(filters.private & filters.text)
 async def bot_pm(client: Bot, message: Message):
+    if message.text == "/start":
     await message.reply_text(
+        chat_id=message.chat.id,
         text=f"Hi, {message.from_user.mention}\n{Config.START_TEXT}",
+        parse_mode='html',
         quote=True,
+        disable_web_page_preview=True
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -36,66 +40,67 @@ async def bot_pm(client: Bot, message: Message):
             ]
         )
     )
-    try:
-        if secret_query:
-            for channel in Config.CHANNELS:
-                # Looking for Document type in messages
-                async for messages in client.USER.search_messages(channel, secret_query, filter="document", limit=10):
-                    doc_file_names = messages.document.file_name
-                    file_size = get_size(messages.document.file_size)
-                    if re.compile(rf'{doc_file_names}', re.IGNORECASE):
-                        media_name = messages.document.file_name.rsplit('.', 1)[0]
-                        media_format = messages.document.file_name.split('.')[-1]
-                        await client.send_chat_action(
-                            chat_id=message.from_user.id,
-                            action="upload_document"
-                        )
-                        try:
-                            await client.copy_message(
-                                chat_id=message.chat.id,
-                                from_chat_id=messages.chat.id,
-                                message_id=messages.message_id,
-                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_DOC.format(media_name,
+    return
+try:
+    if secret_query:
+        for channel in Config.CHANNELS:
+            # Looking for Document type in messages
+            async for messages in client.USER.search_messages(channel, secret_query, filter="document", limit=10):
+                doc_file_names = messages.document.file_name
+                file_size = get_size(messages.document.file_size)
+                if re.compile(rf'{doc_file_names}', re.IGNORECASE):
+                    media_name = messages.document.file_name.rsplit('.', 1)[0]
+                    media_format = messages.document.file_name.split('.')[-1]
+                    await client.send_chat_action(
+                        chat_id=message.from_user.id,
+                        action="upload_document"
+                    )
+                    try:
+                        await client.copy_message(
+                            chat_id=message.chat.id,
+                            from_chat_id=messages.chat.id,
+                            message_id=messages.message_id,
+                            caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_DOC.format(media_name,
                                                                                             media_format, file_size)
-                            )
-                        except FloodWait as e:
-                            time.sleep(e.x)
-                # Looking for photo type in messages
-                async for messages in client.USER.search_messages(channel, secret_query, filter="photo", limit=10):
-                    pic_file_names = messages.caption
-                    file_size = get_size(messages.photo.file_size)
-                    if re.compile(rf'{pic_file_names}', re.IGNORECASE):
-                        await client.send_chat_action(
-                            chat_id=message.from_user.id,
-                            action="upload_photo"
                         )
-                        try:
-                            await client.copy_message(
-                                chat_id=message.chat.id,
-                                from_chat_id=messages.chat.id,
-                                message_id=messages.message_id,
-                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_PIC.format(media_name, file_size)
-                            )
-                        except FloodWait as e:
-                            time.sleep(e.x)
-                # Looking for video type in messages
-                async for messages in client.USER.search_messages(channel, secret_query, filter="video", limit=10):
-                    vid_file_names = messages.caption
-                    file_size = get_size(messages.video.file_size)
-                    if re.compile(rf'{vid_file_names}', re.IGNORECASE):
-                        media_name = secret_query.upper()
-                        await client.send_chat_action(
-                            chat_id=message.from_user.id,
-                            action="upload_video"
+                    except FloodWait as e:
+                        time.sleep(e.x)
+            # Looking for photo type in messages
+            async for messages in client.USER.search_messages(channel, secret_query, filter="photo", limit=10):
+                pic_file_names = messages.caption
+                file_size = get_size(messages.photo.file_size)
+                if re.compile(rf'{pic_file_names}', re.IGNORECASE):
+                    await client.send_chat_action(
+                        chat_id=message.from_user.id,
+                        action="upload_photo"
+                    )
+                    try:
+                        await client.copy_message(
+                            chat_id=message.chat.id,
+                            from_chat_id=messages.chat.id,
+                            message_id=messages.message_id,
+                            caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_PIC.format(media_name, file_size)
                         )
-                        try:
-                            await client.copy_message(
-                                chat_id=message.chat.id,
-                                from_chat_id=messages.chat.id,
-                                message_id=messages.message_id,
-                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
-                            )
-                        except FloodWait as e:
-                            time.sleep(e.x)
+                    except FloodWait as e:
+                        time.sleep(e.x)
+            # Looking for video type in messages
+            async for messages in client.USER.search_messages(channel, secret_query, filter="video", limit=10):
+                vid_file_names = messages.caption
+                file_size = get_size(messages.video.file_size)
+                if re.compile(rf'{vid_file_names}', re.IGNORECASE):
+                    media_name = secret_query.upper()
+                    await client.send_chat_action(
+                        chat_id=message.from_user.id,
+                        action="upload_video"
+                    )
+                    try:
+                        await client.copy_message(
+                            chat_id=message.chat.id,
+                            from_chat_id=messages.chat.id,
+                            message_id=messages.message_id,
+                            caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
+                        )
+                    except FloodWait as e:
+                        time.sleep(e.x)
     except Exception:
         return
