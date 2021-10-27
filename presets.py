@@ -1,6 +1,7 @@
 # ----------------------------------- https://github.com/m4mallu/gofilesbot ------------------------------------------ #
 
 class Presets(object):
+    CAPTION_TEXT_PIC = "<b>{}\n\n ♻️ 𝙅𝙊𝙄𝙉 :- https://t.me/joinchat/Ur8bdKHGNRdBoeHW </b>"
     CAPTION_TEXT_DOC = "<b>{}\n\n ♻️ 𝙅𝙊𝙄𝙉 :- https://t.me/joinchat/Ur8bdKHGNRdBoeHW </b>"
     CAPTION_TEXT_VID = "<b>{}\n\n ♻️ 𝙅𝙊𝙄𝙉 :- https://t.me/joinchat/Ur8bdKHGNRdBoeHW </b>"
     ASK_PM_TEXT = "<b>നിങ്ങൾ ചോദിച്ച മൂവി ലഭിക്കാൻ താഴെ കാണുന്ന ബട്ടണിൽ ക്ലിക്ക് ചെയ്യുക</b>"
