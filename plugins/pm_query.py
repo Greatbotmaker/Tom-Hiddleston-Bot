@@ -60,6 +60,24 @@ async def bot_pm(client: Bot, message: Message):
                             )
                         except FloodWait as e:
                             time.sleep(e.x)
+                # Looking for photo type in messages
+                async for messages in client.USER.search_messages(channel, secret_query, filter="photo", limit=10):
+                    pic_file_names = messages.caption
+                    file_size = get_size(messages.photo.file_size)
+                    if re.compile(rf'{pic_file_names}', re.IGNORECASE):
+                        await client.send_chat_action(
+                            chat_id=message.from_user.id,
+                            action="upload_photo"
+                        )
+                        try:
+                            await client.copy_message(
+                                chat_id=message.chat.id,
+                                from_chat_id=messages.chat.id,
+                                message_id=messages.message_id,
+                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_PIC.format(media_name, file_size)
+                            )
+                        except FloodWait as e:
+                            time.sleep(e.x)
                 # Looking for video type in messages
                 async for messages in client.USER.search_messages(channel, secret_query, filter="video", limit=10):
                     vid_file_names = messages.caption
