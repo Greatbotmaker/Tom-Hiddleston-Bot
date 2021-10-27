@@ -13,7 +13,7 @@ from helper.custom_filter import allowed_chat_filter
 from pyrogram.errors import ChatAdminRequired
 
 if bool(os.environ.get("ENV", False)):
-    from configs import Config
+    from sample_config import Config
 else:
     from config import Config
 
