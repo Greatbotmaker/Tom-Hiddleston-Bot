@@ -14,7 +14,7 @@ from pyrogram.errors import FloodWait
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 if os.environ.get("ENV", False):
-    from configs import Config
+    from sample_config import Config
 else:
     from config import Config
 
@@ -33,7 +33,7 @@ async def query_mgs(client: Bot, message: Message):
         try:
             for channel in Config.CHANNELS:
                 # Looking for Document type in messages
-                async for messages in client.USER.search_messages(channel, query_message, filter="document", limit=50):
+                async for messages in client.USER.search_messages(channel, query_message, filter="document", limit=10):
                     doc_file_names = messages.document.file_name
                     file_size = get_size(messages.document.file_size)
                     if re.compile(rf'{doc_file_names}', re.IGNORECASE):
@@ -53,7 +53,7 @@ async def query_mgs(client: Bot, message: Message):
                                 reply_markup=InlineKeyboardMarkup(
                                     [
                                         [InlineKeyboardButton(
-                                            "📀 𝖢𝖫𝖨𝖢𝖪 𝖧𝖤𝖱𝖤 📀", url="t.me/{}?start={}".format(info.username, secret_query))
+                                            "👉 CLICK HERE 👈", url="t.me/{}?start={}".format(info.username, secret_query))
                                          ]
                                     ])
                             )
@@ -72,7 +72,7 @@ async def query_mgs(client: Bot, message: Message):
                             time.sleep(e.x)
                         user_message[id] = message.message_id
                 # Looking for video type in messages
-                async for messages in client.USER.search_messages(channel, query_message, filter="video", limit=50):
+                async for messages in client.USER.search_messages(channel, query_message, filter="video", limit=10):
                     vid_file_names = messages.caption
                     file_size = get_size(messages.video.file_size)
                     if re.compile(rf'{vid_file_names}', re.IGNORECASE):
@@ -92,7 +92,7 @@ async def query_mgs(client: Bot, message: Message):
                                 reply_markup=InlineKeyboardMarkup(
                                     [
                                         [InlineKeyboardButton(
-                                            "📀 𝖢𝖫𝖨𝖢𝖪 𝖧𝖤𝖱𝖤 📀", url="t.me/{}?start={}".format(info.username, secret_query))
+                                            "👉 CLICK HERE 👈", url="t.me/{}?start={}".format(info.username, secret_query))
                                          ]
                                     ])
                             )
@@ -109,18 +109,15 @@ async def query_mgs(client: Bot, message: Message):
                             time.sleep(e.x)
                         user_message[id] = message.message_id
         except Exception:
-                pass
-        else:
-            updated_query = query_message.replace(" ", "+")
             try:
                 await client.send_message(
                     chat_id=message.chat.id,
-                    text=Presets.NO_MEDIA,
-                    reply_to_message_id = message.message_id,
+                    text=Presets.PM_ERROR,
+                    reply_to_message_id=message.message_id,
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [InlineKeyboardButton(
-                                "🔎 Click Here & Go to Google 🔍", url="https://www.google.com/search?q={}".format(updated_query))
+                                "👉 START BOT 👈", url="t.me/{}".format(info.username))
                              ]
                         ])
                 )
@@ -136,7 +133,7 @@ async def query_mgs(client: Bot, message: Message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [InlineKeyboardButton(
-                                "📀 𝖢𝖫𝖨𝖢𝖪 𝖧𝖤𝖱𝖤 📀", url="t.me/{}".format(info.username))
+                                "👉 Click Here To View 👈", url="t.me/{}".format(info.username))
                              ]
                         ])
                 )
@@ -148,15 +145,10 @@ async def query_mgs(client: Bot, message: Message):
             try:
                 await client.send_message(
                     chat_id=message.chat.id,
-                    text=Presets.NO_MEDIA,
-                    reply_to_message_id = message.message_id,
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [InlineKeyboardButton(
-                                "🔎 Click Here & Go to Google 🔍", url="https://www.google.com/search?q={}".format(updated_query))
-                             ]
-                        ])
+                    text=Presets.NO_MEDIA.format(query_message, updated_query),
+                    reply_to_message_id=message.message_id,
+                    parse_mode='html',
+                    disable_web_page_preview=True
                 )
-                user_message.clear()
-            except Exception as e:
-                print(e)
+            except Exception:
+                pass
