@@ -150,6 +150,10 @@ async def query_mgs(client: Bot, message: Message):
                     reply_to_message_id=message.message_id,
                     parse_mode='html',
                     disable_web_page_preview=True
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [InlineKeyboardButton(
+                                "Click Here & Go to Google", url="https://www.google.com/search?q={updated_query}"
                 )
             except Exception:
                 pass
