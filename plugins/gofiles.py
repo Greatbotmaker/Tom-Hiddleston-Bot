@@ -54,7 +54,7 @@ async def query_mgs(client: Bot, message: Message):
                                 reply_markup=InlineKeyboardMarkup(
                                     [
                                         [InlineKeyboardButton(
-                                            "👉 CLICK HERE 👈", url="t.me/{}?start={}".format(info.username, secret_query))
+                                            "DOWNLOAD", url="t.me/{}?start={}".format(info.username, secret_query))
                                          ]
                                     ])
                             )
@@ -66,14 +66,13 @@ async def query_mgs(client: Bot, message: Message):
                                 chat_id=message.from_user.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
-                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_DOC.format(media_name,
-                                                                                            media_format, file_size)
+                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_DOC.format(media_name)
                             )
                         except FloodWait as e:
                             time.sleep(e.x)
                         user_message[id] = message.message_id
                 # Looking for video type in messages
-                async for messages in client.USER.search_messages(channel, query_message, filter="video", limit=10):
+                async for messages in client.USER.search_messages(channel, query_message, filter="video", limit=8):
                     vid_file_names = messages.caption
                     file_size = get_size(messages.video.file_size)
                     if re.compile(rf'{vid_file_names}', re.IGNORECASE):
@@ -93,7 +92,7 @@ async def query_mgs(client: Bot, message: Message):
                                 reply_markup=InlineKeyboardMarkup(
                                     [
                                         [InlineKeyboardButton(
-                                            "👉 CLICK HERE 👈", url="t.me/{}?start={}".format(info.username, secret_query))
+                                            "DOWNLOAD", url="t.me/{}?start={}".format(info.username, secret_query))
                                          ]
                                     ])
                             )
@@ -104,7 +103,7 @@ async def query_mgs(client: Bot, message: Message):
                                 chat_id=message.from_user.id,
                                 from_chat_id=messages.chat.id,
                                 message_id=messages.message_id,
-                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_VID.format(media_name, file_size)
+                                caption=Config.BOTTOM_CAPTION+Presets.CAPTION_TEXT_VID.format(media_name)
                             )
                         except FloodWait as e:
                             time.sleep(e.x)
@@ -134,7 +133,7 @@ async def query_mgs(client: Bot, message: Message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [InlineKeyboardButton(
-                                "👉 Click Here To View 👈", url="t.me/{}".format(info.username))
+                                "DOWNLOAD", url="t.me/{}".format(info.username))
                              ]
                         ])
                 )
